@@ -1,4 +1,4 @@
-package zh.learn.spring5.petclinit.model;
+package zh.learn.spring5.petclinic.model;
 
 import java.time.LocalDate;
 

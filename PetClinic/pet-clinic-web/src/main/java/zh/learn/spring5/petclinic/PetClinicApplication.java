@@ -1,4 +1,4 @@
-package zh.learn.spring5.petclinit;
+package zh.learn.spring5.petclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
