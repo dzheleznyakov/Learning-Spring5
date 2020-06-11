@@ -4,7 +4,7 @@
 
 	<groupId>zh.learn.spring5</groupId>
 	<artifactId>PetClinic</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<modules>
 		<module>pet-clinic-data</module>
