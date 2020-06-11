@@ -59,4 +59,9 @@
 		</plugins>
 	</build>
 
+	<scm>
+		<developerConnection>scm:git:git@github.com:dzheleznyakov/Learning-Spring5.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
 </project>
