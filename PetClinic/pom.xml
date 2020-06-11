@@ -4,7 +4,7 @@
 
 	<groupId>zh.learn.spring5</groupId>
 	<artifactId>PetClinic</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 
 	<modules>
 		<module>pet-clinic-data</module>
@@ -50,7 +50,7 @@
 
 	<scm>
 		<developerConnection>scm:git:git@github.com:dzheleznyakov/Learning-Spring5.git</developerConnection>
-		<tag>PetClinic-0.0.2</tag>
+		<tag>HEAD</tag>
   	</scm>
 
 </project>
