@@ -1,4 +1,4 @@
-package zh.learn.spring5.DependencyInjection;
+package zh.learn.spring5.dependencyInjection;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

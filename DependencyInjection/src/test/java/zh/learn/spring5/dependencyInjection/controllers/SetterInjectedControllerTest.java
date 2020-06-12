@@ -1,8 +1,8 @@
-package zh.learn.spring5.DependencyInjection.controllers;
+package zh.learn.spring5.dependencyInjection.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import zh.learn.spring5.DependencyInjection.services.ConstructorGreetingService;
+import zh.learn.spring5.dependencyInjection.services.ConstructorGreetingService;
 
 class SetterInjectedControllerTest {
     private SetterInjectedController controller;

@@ -1,14 +1,14 @@
-package zh.learn.spring5.DependencyInjection;
+package zh.learn.spring5.dependencyInjection;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import zh.learn.spring5.DependencyInjection.controllers.ConstructorInjectedController;
-import zh.learn.spring5.DependencyInjection.controllers.I18nController;
-import zh.learn.spring5.DependencyInjection.controllers.MyController;
-import zh.learn.spring5.DependencyInjection.controllers.PetController;
-import zh.learn.spring5.DependencyInjection.controllers.PropertyInjectedController;
-import zh.learn.spring5.DependencyInjection.controllers.SetterInjectedController;
+import zh.learn.spring5.dependencyInjection.controllers.ConstructorInjectedController;
+import zh.learn.spring5.dependencyInjection.controllers.I18nController;
+import zh.learn.spring5.dependencyInjection.controllers.MyController;
+import zh.learn.spring5.dependencyInjection.controllers.PetController;
+import zh.learn.spring5.dependencyInjection.controllers.PropertyInjectedController;
+import zh.learn.spring5.dependencyInjection.controllers.SetterInjectedController;
 
 @SpringBootApplication
 public class DependencyInjectionApplication {

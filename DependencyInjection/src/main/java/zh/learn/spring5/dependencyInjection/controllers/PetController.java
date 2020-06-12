@@ -1,8 +1,7 @@
-package zh.learn.spring5.DependencyInjection.controllers;
+package zh.learn.spring5.dependencyInjection.controllers;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import zh.learn.spring5.DependencyInjection.services.PetService;
+import zh.learn.spring5.dependencyInjection.services.PetService;
 
 @Controller
 public class PetController {
