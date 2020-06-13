@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 public class ChuckNorrisQuoteService implements QuoteService {
     private final ChuckNorrisQuotes chuckNorrisQuotes;
 
-    public ChuckNorrisQuoteService() {
-        chuckNorrisQuotes = new ChuckNorrisQuotes();
+    public ChuckNorrisQuoteService(ChuckNorrisQuotes chuckNorrisQuotes) {
+        this.chuckNorrisQuotes = chuckNorrisQuotes;
     }
 
     @Override
