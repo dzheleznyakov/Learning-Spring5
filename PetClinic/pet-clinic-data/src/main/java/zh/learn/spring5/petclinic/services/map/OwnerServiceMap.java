@@ -1,10 +1,12 @@
 package zh.learn.spring5.petclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import zh.learn.spring5.petclinic.model.Owner;
 import zh.learn.spring5.petclinic.services.OwnerService;
 
 import java.util.Set;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
     @Override
     public Set<Owner> findAll() {
