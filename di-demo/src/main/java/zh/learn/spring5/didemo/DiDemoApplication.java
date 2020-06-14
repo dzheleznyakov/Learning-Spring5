@@ -8,6 +8,7 @@ import zh.learn.spring5.didemo.controllers.GetterInjectedController;
 import zh.learn.spring5.didemo.controllers.MyController;
 import zh.learn.spring5.didemo.controllers.PropertyInjectedController;
 import zh.learn.spring5.didemo.examplebeans.FakeDataSource;
+import zh.learn.spring5.didemo.examplebeans.FakeJmsBroker;
 
 @SpringBootApplication
 public class DiDemoApplication {
@@ -27,5 +28,11 @@ public class DiDemoApplication {
         System.out.println(fakeDataSource.getUser());
         System.out.println(fakeDataSource.getPassword());
         System.out.println(fakeDataSource.getUrl());
+
+        System.out.println("\n----- Fake JMS broker");
+        FakeJmsBroker fakeJmsBroker = ctx.getBean(FakeJmsBroker.class);
+        System.out.println(fakeJmsBroker.getUsername());
+        System.out.println(fakeJmsBroker.getPassword());
+        System.out.println(fakeJmsBroker.getUrl());
     }
 }
