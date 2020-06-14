@@ -7,6 +7,7 @@ import zh.learn.spring5.didemo.controllers.ConstructorInjectedController;
 import zh.learn.spring5.didemo.controllers.GetterInjectedController;
 import zh.learn.spring5.didemo.controllers.MyController;
 import zh.learn.spring5.didemo.controllers.PropertyInjectedController;
+import zh.learn.spring5.didemo.examplebeans.FakeDataSource;
 
 @SpringBootApplication
 public class DiDemoApplication {
@@ -20,5 +21,11 @@ public class DiDemoApplication {
         System.out.println(ctx.getBean(PropertyInjectedController.class).sayHello());
         System.out.println(ctx.getBean(GetterInjectedController.class).sayHello());
         System.out.println(ctx.getBean(ConstructorInjectedController.class).sayHello());
+
+        System.out.println("\n----- Fake data source");
+        FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+        System.out.println(fakeDataSource.getUser());
+        System.out.println(fakeDataSource.getPassword());
+        System.out.println(fakeDataSource.getUrl());
     }
 }
