@@ -1,11 +1,11 @@
 package zh.learn.spring5.petclinic.services.map;
 
 import zh.learn.spring5.petclinic.model.Pet;
-import zh.learn.spring5.petclinic.services.CrudService;
+import zh.learn.spring5.petclinic.services.PetService;
 
 import java.util.Set;
 
-public class PerServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
         return super.findAll();
