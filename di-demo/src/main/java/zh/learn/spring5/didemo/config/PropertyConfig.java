@@ -14,8 +14,8 @@ import zh.learn.spring5.didemo.examplebeans.FakeJmsBroker;
 @Configuration
 //@PropertySource({"classpath:datasource.properties", "classpath:jms.properties"})
 @PropertySources({
-        @PropertySource("classpath:datasource.properties"),
-        @PropertySource("classpath:jms.properties")
+        @PropertySource("classpath:datasource.properties")//,
+//        @PropertySource("classpath:jms.properties")
 })
 public class PropertyConfig {
     @Autowired
@@ -42,7 +42,8 @@ public class PropertyConfig {
     @Bean
     public FakeDataSource fakeDataSource() {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUser(env.getProperty("zh.username"));
+//        fakeDataSource.setUser(env.getProperty("zh.username"));
+        fakeDataSource.setUser(user);
         fakeDataSource.setPassword(password);
         fakeDataSource.setUrl(url);
         return fakeDataSource;

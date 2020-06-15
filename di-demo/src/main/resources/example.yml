@@ -1,0 +1,36 @@
+# this is a comment
+
+name: Dmnitriy
+
+names: # this is a list
+  - John
+  - Paul
+  - Ringo
+
+pound_sign: "#"
+
+book:
+  author: Joe Buck
+  publisher: random house
+
+truth: yes # this is boolean
+
+another_truth: True # this is boolean
+
+more_truth: true # this is boolean
+
+false: no # No, false, FALSE
+
+string_val: "This is it's quote"
+
+colon_string: "my courses: one two three"
+
+include_new_lines: |
+  one one one
+  two two two
+  three three three
+
+ignore_new_lines: >
+  this is
+  just one
+  long string
