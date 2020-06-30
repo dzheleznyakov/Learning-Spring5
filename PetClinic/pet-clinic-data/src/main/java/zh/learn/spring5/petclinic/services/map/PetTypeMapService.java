@@ -1,5 +1,6 @@
 package zh.learn.spring5.petclinic.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import zh.learn.spring5.petclinic.model.PetType;
 import zh.learn.spring5.petclinic.services.PetTypeService;
@@ -7,6 +8,7 @@ import zh.learn.spring5.petclinic.services.PetTypeService;
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class PetTypeMapService extends AbstractMapService<PetType, Long>  implements PetTypeService {
     @Override
     public Set<PetType> findAll() {
