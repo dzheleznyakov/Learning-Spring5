@@ -19,6 +19,7 @@ import static org.mockito.Mockito.when;
 
 public class IndexControllerTest {
     private IndexController indexController;
+    private Set<Recipe> recipesData;
 
     @Mock
     RecipeService recipeService;
@@ -31,17 +32,16 @@ public class IndexControllerTest {
         MockitoAnnotations.initMocks(this);
 
         indexController = new IndexController(recipeService);
+
+        recipesData = new HashSet<>();
+        recipesData.add(new Recipe());
+
+        when(recipeService.getRecipes())
+                .thenReturn(recipesData);
     }
 
     @Test
     public void getIndexPage() {
-        Recipe recipe = new Recipe();
-        Set<Recipe> recipesData = new HashSet<>();
-        recipesData.add(recipe);
-
-        when(recipeService.getRecipes())
-                .thenReturn(recipesData);
-
         String viewName = indexController.getIndexPage(model);
 
         assertEquals("index", viewName);
