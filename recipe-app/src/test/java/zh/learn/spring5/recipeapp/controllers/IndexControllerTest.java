@@ -2,6 +2,7 @@ package zh.learn.spring5.recipeapp.controllers;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
@@ -42,10 +43,15 @@ public class IndexControllerTest {
 
     @Test
     public void getIndexPage() {
+        ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
+
         String viewName = indexController.getIndexPage(model);
 
         assertEquals("index", viewName);
         verify(recipeService, times(1)).getRecipes();
-        verify(model, times(1)).addAttribute(eq("recipes"), eq(recipesData));
+        verify(model, times(1))
+                .addAttribute(eq("recipes"), argumentCaptor.capture());
+        Set<Recipe> setInController = argumentCaptor.getValue();
+        assertEquals(recipesData, setInController);
     }
 }
