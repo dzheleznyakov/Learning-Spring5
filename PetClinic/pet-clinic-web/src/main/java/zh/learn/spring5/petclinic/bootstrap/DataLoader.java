@@ -77,9 +77,9 @@ public class DataLoader implements CommandLineRunner {
                 .city("Blenavon")
                 .telephone("123-4567-8901")
                 .pets(new HashSet<>())
+                .firstName("Michael")
+                .lastName("Weston")
                 .build();
-        owner1.setFirstName("Michael");
-        owner1.setLastName("Weston");
 
         Pet mikesPet = Pet.builder()
                 .petType(savedDogPetType)
@@ -96,9 +96,9 @@ public class DataLoader implements CommandLineRunner {
                 .city("Blenavon")
                 .telephone("123-4567-8901")
                 .pets(new HashSet<>())
+                .firstName("Fiona")
+                .lastName("Glenanne")
                 .build();
-        owner2.setFirstName("Fiona");
-        owner2.setLastName("Glenanne");
 
         Pet fionasCat = Pet.builder()
                 .name("Alma")
