@@ -12,6 +12,16 @@ jobs:
     steps:
     - checkout
 
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "PetClinic/pom.xml" }}
+        - v1-dependencies-
+
     - run: mvn dependency:go-offline
+
+    - save_cache:
+        paths:
+        - ~/.m2
+        key: v1-dependencies-{{ checksum "PetClinic/pom.xml" }}
 
     - run: cd PetClinic && mvn integration-test
