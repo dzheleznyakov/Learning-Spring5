@@ -17,6 +17,8 @@ jobs:
         - v1-dependencies-{{ checksum "PetClinic/pom.xml" }}
         - v1-dependencies-
 
+    - run: mvn install -DskipTests
+
     - run: mvn dependency:go-offline
 
     - save_cache:
