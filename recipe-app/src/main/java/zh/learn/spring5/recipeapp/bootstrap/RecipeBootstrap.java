@@ -75,6 +75,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "\n" +
                 "Read more: https://www.simplyrecipes.com/recipes/perfect_guacamole/");
+        guacRecipe.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
+        guacRecipe.setServings(4);
+        guacRecipe.setSource("Simply Recipes");
 
         Notes guacNotes = new Notes();
         guacNotes.setRecipeNotes("The simplest version of guacamole is just mashed avocados with salt. Don’t let the lack of availability of other ingredients stop you from making guacamole.\n" +
@@ -125,6 +128,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "\n" +
                 "Read more: https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
+        tacoRecipe.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
+        tacoRecipe.setServings(4);
+        tacoRecipe.setSource("Simply Recipes");
 
         Notes tacoNotes = new Notes();
         tacoNotes.setRecipeNotes("We have a family motto and it is this: Everything goes better in a tortilla.\n" +
