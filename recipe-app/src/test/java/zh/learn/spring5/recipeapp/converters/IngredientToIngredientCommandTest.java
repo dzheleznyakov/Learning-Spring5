@@ -51,7 +51,7 @@ public class IngredientToIngredientCommandTest {
         assertNotNull(command);
         assertNull(command.getUom());
         assertEquals(ID_VALUE, command.getId());
-        assertEquals(AMOUNT, command.getAmount());
+        assertEquals(AMOUNT, command.getAmount() );
         assertEquals(DESCRIPTION, command.getDescription());
     }
 
