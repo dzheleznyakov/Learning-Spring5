@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import zh.learn.spring5.recipeapp.commands.IngredientCommand;
+import zh.learn.spring5.recipeapp.commands.RecipeCommand;
+import zh.learn.spring5.recipeapp.commands.UnitOfMeasureCommand;
 import zh.learn.spring5.recipeapp.services.IngredientService;
 import zh.learn.spring5.recipeapp.services.RecipeService;
 import zh.learn.spring5.recipeapp.services.UnitOfMeasureService;
@@ -49,8 +50,21 @@ public class IngredientController {
         return "recipe/ingredient/show";
     }
 
-    @GetMapping
-    @RequestMapping("/recipe/{recipeId}/ingredient/{id}/update")
+    @GetMapping("/recipe/{recipeId}/ingredient/new")
+    public String newRecipe(@PathVariable("recipeId") Long recipeId, Model model) {
+        RecipeCommand recipeCommand = recipeService.findCommandById(recipeId);
+
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(recipeId);
+        model.addAttribute("ingredient", ingredientCommand);
+
+        ingredientCommand.setUom(new UnitOfMeasureCommand());
+        model.addAttribute("uomList", uomService.listAllUoms());
+
+        return "recipe/ingredient/ingredientform";
+    }
+
+    @GetMapping("/recipe/{recipeId}/ingredient/{id}/update")
     public String updateRecipeIngredient(@PathVariable("recipeId") Long recipeId,
                                          @PathVariable("id") Long id,
                                          Model model) {

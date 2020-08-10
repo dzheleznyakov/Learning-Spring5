@@ -1,7 +1,8 @@
 package zh.learn.spring5.recipeapp.domain;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -19,7 +20,8 @@ import javax.persistence.OneToOne;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(exclude = "notes")
 @Entity
 public class Recipe {
