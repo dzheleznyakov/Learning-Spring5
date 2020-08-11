@@ -28,7 +28,7 @@ public class UnitOfMeasureServiceImplTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        service = new UniOfMeasureServiceImpl(unitOfMeasureRepository, unitOfMeasureToUnitOfMeasureCommand);
+        service = new UnitOfMeasureServiceImpl(unitOfMeasureRepository, unitOfMeasureToUnitOfMeasureCommand);
     }
 
     @Test
