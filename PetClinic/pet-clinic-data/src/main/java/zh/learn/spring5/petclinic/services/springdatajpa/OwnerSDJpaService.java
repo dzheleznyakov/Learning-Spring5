@@ -9,6 +9,7 @@ import zh.learn.spring5.petclinic.repositories.PetTypeRepository;
 import zh.learn.spring5.petclinic.services.OwnerService;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -57,5 +58,10 @@ public class OwnerSDJpaService implements OwnerService {
     @Override
     public void deleteById(Long id) {
         ownerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+        return ownerRepository.findAllByLastNameLike(lastName);
     }
 }
