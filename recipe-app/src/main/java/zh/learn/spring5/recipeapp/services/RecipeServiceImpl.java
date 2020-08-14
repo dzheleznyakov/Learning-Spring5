@@ -7,6 +7,7 @@ import zh.learn.spring5.recipeapp.commands.RecipeCommand;
 import zh.learn.spring5.recipeapp.converters.RecipeCommandToRecipe;
 import zh.learn.spring5.recipeapp.converters.RecipeToRecipeCommand;
 import zh.learn.spring5.recipeapp.domain.Recipe;
+import zh.learn.spring5.recipeapp.exceptions.NotFoundException;
 import zh.learn.spring5.recipeapp.repositories.RecipeRepository;
 
 import java.util.HashSet;
@@ -41,7 +42,7 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public Recipe findById(Long id) {
         return recipeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Recipe Not Found"));
+                .orElseThrow(() -> new NotFoundException("Recipe Not Found"));
     }
 
     @Override

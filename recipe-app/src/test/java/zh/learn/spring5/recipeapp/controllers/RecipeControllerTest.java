@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import zh.learn.spring5.recipeapp.commands.RecipeCommand;
 import zh.learn.spring5.recipeapp.domain.Recipe;
+import zh.learn.spring5.recipeapp.exceptions.NotFoundException;
 import zh.learn.spring5.recipeapp.services.RecipeService;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -44,9 +45,6 @@ public class RecipeControllerTest {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller)
-                .build();
-
         when(recipeService.findById(anyLong()))
                 .thenReturn(recipe);
 
@@ -54,6 +52,18 @@ public class RecipeControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/show"))
                 .andExpect(model().attributeExists("recipe"));
+    }
+
+    @Test
+    public void testGetRecipeNotFound() throws Exception {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        when(recipeService.findById(anyLong()))
+                .thenThrow(NotFoundException.class);
+
+        mockMvc.perform(get("/recipe/42/show"))
+                .andExpect(status().isNotFound());
     }
 
     @Test

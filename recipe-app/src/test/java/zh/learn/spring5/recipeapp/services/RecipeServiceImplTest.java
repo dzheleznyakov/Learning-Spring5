@@ -8,6 +8,7 @@ import zh.learn.spring5.recipeapp.commands.RecipeCommand;
 import zh.learn.spring5.recipeapp.converters.RecipeCommandToRecipe;
 import zh.learn.spring5.recipeapp.converters.RecipeToRecipeCommand;
 import zh.learn.spring5.recipeapp.domain.Recipe;
+import zh.learn.spring5.recipeapp.exceptions.NotFoundException;
 import zh.learn.spring5.recipeapp.repositories.RecipeRepository;
 
 import java.util.HashSet;
@@ -56,6 +57,16 @@ public class RecipeServiceImplTest {
         assertNotNull(returnedRecipe);
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void getRecipeByIdTestNotFound() {
+        Optional<Recipe> recipeOptional = Optional.empty();
+
+        when(recipeRepository.findById(anyLong()))
+                .thenReturn(recipeOptional);
+
+        recipeService.findById(1L);
     }
 
     @Test
