@@ -50,4 +50,12 @@ public class Pet extends BaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
     private Set<Visit> visits = new HashSet<>();
+
+    public void addVisit(Visit visit) {
+        if (visits == null) {
+            visits = new HashSet<>();
+        }
+        visits.add(visit);
+        visit.setPet(this);
+    }
 }
