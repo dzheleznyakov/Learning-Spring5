@@ -8,10 +8,15 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.util.UriTemplate;
 import zh.learn.spring5.petclinic.model.Pet;
 import zh.learn.spring5.petclinic.model.Visit;
 import zh.learn.spring5.petclinic.services.PetService;
 import zh.learn.spring5.petclinic.services.VisitService;
+
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -26,6 +31,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 class VisitControllerTest {
+    private static final String PETS_CREATE_OR_UPDATE_VISIT_FORM = "pets/createOrUpdateVisitForm";
+    private static final String REDIRECT_OWNERS_1 = "redirect:/owners/1";
+
     @Mock
     PetService petService;
 
@@ -37,42 +45,55 @@ class VisitControllerTest {
 
     MockMvc mockMvc;
 
+    private long ownerId = 1L;
+    private long petId = 2L;
     private Pet pet;
     private Visit visit;
 
-    private
+    private final UriTemplate visitUriTemplate = new UriTemplate("/owners/{ownerId}/pets/{petId}/visits/new");
+    private final Map<String, Long> visitUriVariables = new HashMap<>();
+    private URI visitURI;
 
     @BeforeEach
-    void setUp() {
+    void setUpMockMvc() {
         mockMvc = MockMvcBuilders
                 .standaloneSetup(visitController)
                 .build();
+    }
 
-        pet = Pet.builder().id(2L).build();
+    @BeforeEach
+    void setUpDomainElementsAndMocks() {
+        pet = Pet.builder().id(ownerId).build();
         visit = Visit.builder().id(1L).build();
+
+        when(petService.findById(anyLong()))
+                .thenReturn(pet);
+    }
+
+    @BeforeEach
+    void setUpNewVisitUri() {
+        visitUriVariables.clear();
+        visitUriVariables.put("ownerId", ownerId);
+        visitUriVariables.put("petId", petId);
+        visitURI = visitUriTemplate.expand(visitUriVariables);
     }
 
     @Test
     void initNewVisitForm() throws Exception {
-        when(petService.findById(anyLong()))
-                .thenReturn(pet);
-
-        mockMvc.perform(get("/owners/1/pets/2/visits/new"))
+        mockMvc.perform(get(visitURI))
                 .andExpect(status().isOk())
-                .andExpect(view().name("pets/createOrUpdateVisitForm"))
+                .andExpect(view().name(PETS_CREATE_OR_UPDATE_VISIT_FORM))
                 .andExpect(model().attributeExists("visit"));
     }
 
     @Test
     void processNewVisitForm() throws Exception {
-        when(petService.findById(anyLong()))
-                .thenReturn(pet);
         when(visitService.save(any()))
                 .thenReturn(visit);
 
-        mockMvc.perform(post("/owners/1/pets/2/visits/new"))
+        mockMvc.perform(post(visitURI))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/owners/1"))
+                .andExpect(view().name(REDIRECT_OWNERS_1))
                 .andExpect(model().attributeExists("visit"));
 
         verify(visitService, times(1)).save(any(Visit.class));
