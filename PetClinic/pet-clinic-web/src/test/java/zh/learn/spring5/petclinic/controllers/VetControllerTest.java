@@ -16,6 +16,7 @@ import java.util.Set;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -51,5 +52,15 @@ class VetControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("vets/index"))
                 .andExpect(model().attributeExists("vets"));
+    }
+
+    @Test
+    void name() throws Exception {
+        when(vetService.findAll())
+                .thenReturn(vets);
+
+        mockMvc.perform(get("/api/vets"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[{\"id\": 1}]"));
     }
 }
