@@ -2,9 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/openjdk:8-jdk
+    - image: circleci/openjdk:11
 
-    working_directory: ~/Learning-Spring5/recipe-app
+    working_directory: ~/Learning-Spring5/PetClinic
 
     environment:
       MAVEN_OPTS: -Xmx3200m
