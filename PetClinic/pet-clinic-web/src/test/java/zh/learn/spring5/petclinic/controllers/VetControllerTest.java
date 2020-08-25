@@ -55,7 +55,7 @@ class VetControllerTest {
     }
 
     @Test
-    void name() throws Exception {
+    void testAccessToVetListAsJson() throws Exception {
         when(vetService.findAll())
                 .thenReturn(vets);
 
