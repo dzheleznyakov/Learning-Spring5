@@ -10,8 +10,8 @@ jobs:
       MAVEN_OPTS: -Xmx3200m
 
     steps:
-    - checkout
-      path: ~/Learning-Spring5
+    - checkout:
+        path: ~/Learning-Spring5
 
     - restore_cache:
         keys:
