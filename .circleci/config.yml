@@ -11,6 +11,7 @@ jobs:
 
     steps:
     - checkout
+      path: ~/Learning-Spring5
 
     - restore_cache:
         keys:
