@@ -2,7 +2,6 @@ package zh.learn.spring.springclientexamples.services;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
 import zh.learn.spring.api.domain.User;
 import zh.learn.spring.springclientexamples.config.RestTemplateConfig;
@@ -16,8 +15,8 @@ public class ApiServiceImplTest {
 
     @Before
     public void setUp() {
-        RestTemplate restTemplate = new RestTemplateConfig().restTemplate(new RestTemplateBuilder());
-        apiService = new ApiServiceImpl(restTemplate);
+        RestTemplate restTemplate = new RestTemplateConfig().restTemplate();
+        apiService = new ApiServiceImpl(restTemplate, "api_url");
     }
 
     @Test
