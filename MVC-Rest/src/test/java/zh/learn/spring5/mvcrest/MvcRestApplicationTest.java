@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class MvcRestApplicationTests {
 
     @Test
-    void contextLoads() {
+    void testLoadingContext() {
     }
 
 }
