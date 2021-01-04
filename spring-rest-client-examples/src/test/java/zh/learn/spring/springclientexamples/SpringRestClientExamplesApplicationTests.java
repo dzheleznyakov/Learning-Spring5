@@ -1,4 +1,4 @@
-package zh.learn.spring.api;
+package zh.learn.spring.springclientexamples;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
