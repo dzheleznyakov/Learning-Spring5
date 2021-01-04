@@ -25,33 +25,11 @@ public class UserController {
 
     @PostMapping({"/users", "/users/"})
     public Mono<String> formPost(Model model, ServerWebExchange serverWebExchange) {
-//        MultiValueMap<String, String> map = serverWebExchange.getFormData().block();
-//
-//        Integer limit = new Integer(map.get("limit").get(0));
-//
-//        log.debug("Received Limit value: " + limit);
-//        //default if null or zero
-//        if(limit == null || limit == 0){
-//            log.debug("Setting limit to default of 10");
-//            limit = 10;
-//        }
-//
-//        model.addAttribute("users", apiService.getUsers(limit));
-//
-//        return "userlist";
-        return serverWebExchange.getFormData()
-                .map(map -> {
-                    Integer limit = Integer.valueOf(map.get("limit").get(0));
-
-                    log.debug("Received Limit value: " + limit);
-                    if (limit == 0) {
-                        log.debug("Setting limit to default of 10");
-                        limit = 10;
-                    }
-
-                    model.addAttribute("users", apiService.getUsers(limit));
-
-                    return "userlist";
-                });
+        Mono<Integer> limitMono = serverWebExchange
+                .getFormData()
+                .map(data -> data.getFirst("limit"))
+                .map(Integer::valueOf);
+        model.addAttribute("users", apiService.getUsers(limitMono));
+        return Mono.just("userlist");
     }
 }
